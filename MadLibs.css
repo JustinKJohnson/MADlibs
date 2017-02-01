@@ -1,0 +1,96 @@
+/* Body Styles */
+body{
+  color: gray;
+  border: none;
+  background-image: url("MadLibs_Background.jpg");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: auto;
+  border-top: 3px;
+  border-bottom: 3px;
+  border-right: 2px;
+  border-left: 2px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+}
+
+var{
+  position:inherit;
+}
+
+h1{
+  background-color: white;
+  max-width: 700px;
+  border: 2px solid black;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+h3{
+  background-color: purple;
+  max-width: 300px;
+  border: 2px solid black;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+p{
+  background-color: purple;
+  max-width: 500px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 2px solid black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+button {
+  padding-top: 7px;
+  padding-left: 17px;
+  padding-right: 17px;
+  padding-bottom: 7px;
+  border-radius: 5px;
+  border: 2px solid black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+button:hover {
+  background-color: green;
+  color: black;
+}
+
+button:active {
+  background-color: white;
+  color: blue;
+}
+
+.displayBlock {
+  padding-top: 17px;
+  padding-bottom: 27px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-radius: 7px solid black;
+}
+
+input {
+  background-color: blue;
+  color: white;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius: 4px solid black;
+}

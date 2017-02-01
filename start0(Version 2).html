@@ -1,0 +1,164 @@
+<!--
+making MadLIBs
+how do we show/hide? display. visibility
+reference the core concept topics to assist you
+22 innerHTML
+25 events
+26 removals
+29 entering Text
+23 change CSS
+className=""
+display vs visibility
+28 enter key
+focus() blur()
+cursor pointer
+preventing empty inputs
+reseting the form to try again
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Master MadLib</title>
+    <meta charset="UTF-8">
+    <link href="MadLibs.css" rel="stylesheet">
+    <style>
+        div {
+            border: 1px solid gray;
+            background-color: gray;
+        }
+
+        .displayNone {
+            display: none;
+        }
+
+        .displayBlock {
+            display: block;
+        }
+    </style>
+</head>
+
+<body background="MadLibs_Background.jpg">
+    <div id="inputPanel">
+        <h3>A trio of questions for you</h3>
+        <p>A Celebrity name:
+            <input id="celebrityName" type="text" placeholder="celebrity name">
+        </p>
+        <p>Favorite film:
+            <input id="favColor" type="text" placeholder="favorite film">
+        </p>
+        <p>Food:
+            <input id="food" type="text" placeholder="food">
+        </p>
+        <button id="submit">Submit all of your answers</button>
+        <p id="warning">Please answer all questions would you kindly?</p>
+
+    </div>
+    <div id="outputPanel">
+        <p>Your silly and funny story....</p>
+        <p id="theStory">Odd</p>
+        <button id="again">Play Again?</button>
+    </div>
+    <script>
+        var inputPanel = document.querySelector("#inputPanel");
+        var outputPanel = document.querySelector("#outputPanel");
+        var warning = document.querySelector("#warning");
+
+        var submit = document.querySelector("#submit");
+        submit.style.cursor = "pointer";
+
+        submit.addEventListener("click", writeStory, false;)
+
+        var again = document.querySelector("#again");
+        again.addEventListener("click", resetPage, false);
+        submit.style.cursor = "pointer";
+
+        document.querySelector('#firstName').focus();
+
+        var celebrityName = document.querySelector('#celebrityName');
+        var favFilm = document.querySelector("#favFilm");
+        var place = document.querySelector('#food');
+        var theStory = document.querySelector("#theStory");
+
+        window.addEventListener("keydown", keydownHandler, false);
+
+        celebrityName.focus();
+
+        //Lay down the set of display pannels.
+        inputPanel.className = "displayBlock";
+        outputPanel.className = "displayNone";
+        warning.className = "displayNone";
+
+        function keydownHandler(event) {
+            if (event.keyCode === 13) {
+            console.log("Enter key pressed");
+            writeStory();
+          }
+        }
+
+        function checkComplete() {
+            //verify the user filled in the form
+            //otherwise, theStory can't be Finished
+            var warningText = document.querySelector("Not Finished yet")
+            var warningArray = [];
+            if (celebrityName.value == "") {
+                warningArray.push ("celebrityName");
+              }
+
+            if (favFilm.value == "") {
+                warningArray.push ("faveFilm");
+              }
+
+            if (food.value == "") {
+                warningArray.push ("food");
+              }
+
+            if (warningArray.length !== 0 ) {
+              //Prints out desired story
+              warningText += warningArray.join (", ");
+              warning.innerHTML = warningText;
+              return false;
+            }else {
+              return true;
+            }
+        }
+
+        function writeStory() {
+            //grab the input values to write the story
+            if (checkComplete() == true) {
+            //Gather all input values to make a funny yet, odd hollywood story
+            var finishedStory +=
+            finishedStory += "<p>Good day, " + celebrityName.value
+            finishedStory += "Loves the movie " + favFilm.value + "on a rainy day.</p>";
+            finishedStory += "<p>With a side of, " + food.value + "to go with their flick!</p>";
+
+            theStory.innerHTML = finishedStory;
+
+            inputPanel.className = "displayNone";
+            outputPanel.className = "displayBlock";
+            warning.className = "displayNone";
+        }
+
+      }else {
+          console.log("The Story isn't completed!");
+          warning.className ="displayBlock";
+      }
+
+        function resetPage() {
+            //put stuff here to reset the page so the user can try again
+
+            inputPanel.className = "displayNone";
+            outputPanel.className = "displayBlock";
+            warning.className = "displayNone";
+            celebrityName.value = "";
+            faveFilm.value = "";
+            food.value = "";
+
+            celebrityName.focus();
+
+        }
+    </script>
+</body>
+
+</html>

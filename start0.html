@@ -20,12 +20,16 @@ reseting the form to try again
 <html>
 
 <head>
-    <title>Master MadLib</title>
+    <title>Master MadLib/Hollywood edition!</title>
     <meta charset="UTF-8">
+    <link href="MadLibs.css" rel="stylesheet">
     <style>
         div {
-            border: 1px solid red;
-            background-color: #c7af90;
+            border-top: 2px solid gray;
+            border-bottom: 2px solid gray;
+            border-right: 2px solid gray;
+            border-left: 2px solid gray;
+            background-color: light purple;
         }
 
         .displayNone {
@@ -40,64 +44,208 @@ reseting the form to try again
 
 <body>
     <div id="inputPanel">
-        <h3>A few questions for you</h3>
-        <p>A first name:
-            <input id="firstName" type="text" placeholder="first name">
+      <h1>Mad Libs Hollywood version</h1>
+        <p>Your objective is to fill in the blank statements below to make a wacky story!</p>
+        <p>No incompletion is allowed! You must fill in all of the blank statements.</p>
+
+      <h3>Here are the questions for you!</h3>
+        <p>Celebrity name:
+            <input id="celebrityName" type="text" placeholder="celebrity name">
         </p>
-        <p>Your favorite color:
-            <input id="favColor" type="text" placeholder="favorite color">
+        <p>Film:
+            <input id="film" type="text" placeholder="film">
         </p>
-        <p>Place:
-            <input id="place" type="text" placeholder="place">
+        <p>Food:
+            <input id="food" type="text" placeholder="food">
         </p>
-        <button id="submit">Submit your answers</button>
-        <p id="warning">Please answer all questions.</p>
+        <p>Hobby:
+            <input id="hobby" type="text" placeholder="hobby">
+        </p>
+        <p>Friend:
+            <input id="friend" type="text" placeholder="friend">
+        </p>
+        <p>Dislike:
+            <input id="dislike" type="text" placeholder="dislike">
+        </p>
+        <p>Booze:
+            <input id="booze" type="text" placeholder="booze">
+        </p>
+        <p>Hotel:
+            <input id="hotel" type="text" placeholder="hotel">
+        </p>
+        <p>Decade:
+            <input id="decade" type="text" placeholder="decade">
+        </p>
+        <p>Destination:
+            <input id="destination" type="text" placeholder="destination">
+        </p>
+
+
+        <button id="submit">Submit all of your answers</button>
+        <p id="warning">Please answer all questions</p>
+
 
     </div>
     <div id="outputPanel">
-        <p>Your story....</p>
-        <p id="theStory">junk</p>
-        <button id="again">Again?</button>
+        <p>Your silly and wacky story....</p>
+        <p id="theStory">Odd</p>
+        <button id="again">Play Again?</button>
     </div>
+
     <script>
         var inputPanel = document.querySelector("#inputPanel");
         var outputPanel = document.querySelector("#outputPanel");
         var warning = document.querySelector("#warning");
 
         var submit = document.querySelector("#submit");
+        submit.style.cursor = "pointer";
+
         submit.addEventListener("click", writeStory, false);
+
 
         var again = document.querySelector("#again");
         again.addEventListener("click", resetPage, false);
+        again.style.cursor = "pointer";
 
-        document.querySelector('#firstName').focus();
+        document.querySelector('#celebrityName').focus();
 
-        var firstName = document.querySelector('#firstName');
-        var favColor = document.querySelector("#favColor");
-        var place = document.querySelector('#place');
+        var celebrityName = document.querySelector('#celebrityName');
+        var film = document.querySelector("#film");
+        var place = document.querySelector('#food');
+        var hobby = document.querySelector('#hobby');
+        var friend = document.querySelector('#friend');
+        var dislikes = document.querySelector('#dislike');
+        var booze = document.querySelector('#booze');
+        var hotel = document.querySelector('#hotel');
+        var decade = document.querySelector('#decade');
+        var destination = document.querySelector('#destination');
         var theStory = document.querySelector("#theStory");
 
         window.addEventListener("keydown", keydownHandler, false);
 
-        function keydownHandler(event) {
-            console.log("Enter key pressed");
+        celebrityName.focus();
 
+        //Lay down the set of display pannels.
+        inputPanel.className = "displayBlock";
+        outputPanel.className = "displayNone";
+        warning.className = "displayNone";
+
+        function keydownHandler(event) {
+            if (event.keyCode === 13) {
+                console.log("Enter key pressed");
+                writeStory();
+            }
         }
 
         function checkComplete() {
             //verify the user filled in the form
+            //otherwise, theStory can't be Finished
+            var warningText = "Not Finished fool! Provide ";
+            var warningArray = [];
+            if (celebrityName.value == "") {
+                warningArray.push(" celebrityName ");
+            }
+
+            if (film.value == "") {
+                warningArray.push(" film ");
+            }
+
+            if (food.value == "") {
+                warningArray.push(" food ");
+            }
+
+            if (hobby.value == "") {
+                warningArray.push(" hobby ");
+            }
+
+            if (friend.value == ""){
+                warningArray.push(" friend ");
+            }
+
+            if (dislike.value == "") {
+                warningArray.push(" dislike ");
+            }
+
+            if (booze.value == ""){
+                warningArray.push(" booze ");
+            }
+
+            if (hotel.value == ""){
+                warningArray.push(" hotel ");
+            }
+
+            if (decade.value == ""){
+                warningArray.push(" decade ");
+            }
+
+            if (destination.value == ""){
+                warningArray.push(" destination ");
+            }
+
+            if (warningArray.length !== 0) {
+                //Prints out desired story
+                warningText += warningArray.join(", ");
+                warning.innerHTML = warningText;
+                return false;
+            } else {
+                return true;
+            }
 
         }
 
         function writeStory() {
             //grab the input values to write the story
+            if (checkComplete() == true) {
+                //Gather all input values
+                var finishedStory = "";
+                finishedStory += "<p>Good day to you, " + celebrityName.value + ", ";
+                finishedStory += "Loves the movie " + film.value + " anytime.</p> ";
+                finishedStory += "<p>With a side of " + food.value + " with their flick!</p> ";
+                finishedStory += "<p>While enjoying " + hobby.value + " on the sidelines!</p> ";
+                finishedStory += "<p>Is pals with, " + friend.value + " all the time! ";
+                finishedStory += "As both hate, " + dislike.value + " in everyway!</p>";
+                finishedStory += "<p>But, both like " + booze.value + " that they love greatly!</p> ";
+                finishedStory += "<p>This paticular " + hotel.value + " is their favorite, ";
+                finishedStory += "because of its " + decade.value + " appeal to them, ";
+                finishedStory += "making any trip to " + destination.value + " worth it!</p> ";
+
+                theStory.innerHTML = finishedStory;
+
+                inputPanel.className = "displayNone";
+                outputPanel.className = "displayBlock";
+                warning.className = "displayNone";
+
+
+            } else {
+                console.log("The Story isn't completed!");
+                warning.className = "displayBlock";
+            }
 
         }
 
         function resetPage() {
             //put stuff here to reset the page so the user can try again
+                console.log("reset!");
+
+            inputPanel.className = "displayBlock";
+            outputPanel.className = "displayNone";
+            warning.className = "displayNone";
+            celebrityName.value = "";
+            film.value = "";
+            food.value = "";
+            hobby.value = "";
+            friend.value = "";
+            dislike.value = "";
+            booze.value = "";
+            hotel.value = "";
+            decade.value = "";
+            destination.value = "";
+
+
+            celebrityName.focus();
 
         }
+
     </script>
 </body>
 
