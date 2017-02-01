@@ -1,21 +1,3 @@
-<!--
-making MadLIBs
-how do we show/hide? display. visibility
-reference the core concept topics to assist you
-22 innerHTML
-25 events
-26 removals
-29 entering Text
-23 change CSS
-className=""
-display vs visibility
-28 enter key
-focus() blur()
-cursor pointer
-preventing empty inputs
-reseting the form to try again
--->
-
 <!DOCTYPE html>
 <html>
 
@@ -198,15 +180,15 @@ reseting the form to try again
             if (checkComplete() == true) {
                 //Gather all input values
                 var finishedStory = "";
-                finishedStory += "<p>Good day to you, " + celebrityName.value + ", ";
-                finishedStory += "Loves the movie " + film.value + " anytime.</p> ";
+                finishedStory += "<p>Good day to you " + celebrityName.value + " ";
+                finishedStory += "loves the movie " + film.value + " anytime.</p> ";
                 finishedStory += "<p>With a side of " + food.value + " with their flick!</p> ";
                 finishedStory += "<p>While enjoying " + hobby.value + " on the sidelines!</p> ";
-                finishedStory += "<p>Is pals with, " + friend.value + " all the time! ";
-                finishedStory += "As both hate, " + dislike.value + " in everyway!</p>";
+                finishedStory += "<p>Is pals with " + friend.value + " all the time! ";
+                finishedStory += "As both hate " + dislike.value + " in everyway!</p>";
                 finishedStory += "<p>But, both like " + booze.value + " that they love greatly!</p> ";
-                finishedStory += "<p>This paticular " + hotel.value + " is their favorite, ";
-                finishedStory += "because of its " + decade.value + " appeal to them, ";
+                finishedStory += "<p>This paticular hotel " + hotel.value + " is their favorite ";
+                finishedStory += "because of its " + decade.value + " appeal to them ";
                 finishedStory += "making any trip to " + destination.value + " worth it!</p> ";
 
                 theStory.innerHTML = finishedStory;

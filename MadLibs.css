@@ -1,6 +1,6 @@
 /* Body Styles */
 body{
-  color: gray;
+  color: white;
   border: none;
   background-image: url("MadLibs_Background.jpg");
   background-position: center;
@@ -19,7 +19,7 @@ var{
 }
 
 h1{
-  background-color: white;
+  background-color: purple;
   max-width: 700px;
   border: 2px solid black;
   padding-top: 4px;
